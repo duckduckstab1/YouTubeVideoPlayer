@@ -1,26 +1,52 @@
+import java.util.ArrayList;
+
 import java.util.Queue;
 
 import java.util.LinkedList;
 
 public class YouTubeVideoPlayer {
 
-    Queue queue = new LinkedList<>();
+    public static void main(String[] args) {
 
-    public void addVideo(String videoURL) {
+        // Create a queue of videos to be played
 
-        queue.add(videoURL);
+        Queue videoQueue = new LinkedList<>();
 
-    }
+        videoQueue.add("Video 1");
 
-    public void playVideo() {
+        videoQueue.add("Video 2");
 
-        if (queue.peek() != null) {
+        videoQueue.add("Video 3");
 
-            String videoURL = queue.remove();
+        videoQueue.add("Video 4");
 
-            // Code to play video
+        videoQueue.add("Video 5");
 
-            System.out.println("Playing video " + videoURL);
+        // Create a blacklist of videos to be blocked
+
+        ArrayList videoBlacklist = new ArrayList<>();
+
+        videoBlacklist.add("Video 3");
+
+        videoBlacklist.add("Video 5");
+
+        // Play the next video in the queue
+
+        String videoToPlay = videoQueue.poll();
+
+        // Check if the video is on the blacklist
+
+        if (!videoBlacklist.contains(videoToPlay)) {
+
+            // Play the video
+
+            System.out.println("Now playing: " + videoToPlay);
+
+        } else {
+
+            // Skip the video
+
+            System.out.println("Skipping: " + videoToPlay);
 
         }
 
